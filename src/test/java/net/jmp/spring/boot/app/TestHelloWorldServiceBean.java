@@ -41,8 +41,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 /// The test class for the hello world service bean.
-/// Note that because this is not a Spring Boot
-/// application autowiring does not work.
 ///
 /// @version    0.1.0
 /// @since      0.1.0

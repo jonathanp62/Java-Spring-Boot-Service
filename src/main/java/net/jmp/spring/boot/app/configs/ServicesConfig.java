@@ -30,6 +30,7 @@ package net.jmp.spring.boot.app.configs;
 
 import net.jmp.spring.boot.app.services.HelloWorldService;
 import net.jmp.spring.boot.app.services.HelloWorldServiceImpl;
+import net.jmp.spring.boot.app.services.StringService;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -51,5 +52,13 @@ public class ServicesConfig {
     @Bean
     public HelloWorldService helloWorldService() {
         return new HelloWorldServiceImpl();
+    }
+
+    /// The string service.
+    ///
+    /// @return net.jmp.spring.boot.app.services.StringService
+    @Bean
+    public StringService stringService() {
+        return new StringService();
     }
 }

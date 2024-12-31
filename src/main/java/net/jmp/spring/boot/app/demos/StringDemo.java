@@ -1,7 +1,7 @@
 package net.jmp.spring.boot.app.demos;
 
 /*
- * (#)HelloWorldDemo.java   0.1.0   12/31/2024
+ * (#)StringDemo.java   0.1.0   12/31/2024
  *
  * @author   Jonathan Parker
  *
@@ -30,7 +30,7 @@ package net.jmp.spring.boot.app.demos;
 
 import net.jmp.spring.boot.app.ApplicationContextProvider;
 
-import net.jmp.spring.boot.app.services.HelloWorldService;
+import net.jmp.spring.boot.app.services.StringService;
 
 import net.jmp.util.extra.demo.Demo;
 import net.jmp.util.extra.demo.DemoClass;
@@ -41,18 +41,18 @@ import static net.jmp.util.logging.LoggerUtils.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/// The hello world service demonstration.
+/// The string service demonstration.
 ///
 /// @version    0.1.0
 /// @since      0.1.0
 @DemoClass
 @DemoVersion(0.1)
-public final class HelloWorldDemo implements Demo {
+public final class StringDemo implements Demo {
     /// The logger.
     private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
     /// The constructor.
-    public HelloWorldDemo() {
+    public StringDemo() {
         super();
     }
 
@@ -63,10 +63,16 @@ public final class HelloWorldDemo implements Demo {
             this.logger.trace(entry());
         }
 
-        final HelloWorldService helloWorldService = ApplicationContextProvider.getApplicationContext().getBean(HelloWorldService.class);
+        final StringService stringService = ApplicationContextProvider.getApplicationContext().getBean(StringService.class);
+
+        final String result1 = stringService.sanitize("Key / Value");
+        final String result2 = stringService.sanitize("Key-Value");
+        final String result3 = stringService.sanitize("~`!@#%^&*()+={}[]\\|;:'\"<>,.?/");
 
         if (this.logger.isInfoEnabled()) {
-            this.logger.info(helloWorldService.getHelloWorld());
+            this.logger.info("Sanitized Key / Value -> '" + result1 + "'");
+            this.logger.info("Sanitized Key-Value -> '" + result2 + "'");
+            this.logger.info("Sanitized ~`!@#%^&*()+={}[]\\|;:'\"<>,.?/ -> '" + result3 + "'");
         }
 
         if (this.logger.isTraceEnabled()) {

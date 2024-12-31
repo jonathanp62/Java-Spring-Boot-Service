@@ -2,6 +2,7 @@
   "version": 0.1,
   "package": "net.jmp.spring.boot.app.demos",
   "demos": [
-    "HelloWorldDemo"
+    "HelloWorldDemo",
+    "StringDemo"
   ]
 }
