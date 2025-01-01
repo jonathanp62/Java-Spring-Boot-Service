@@ -1,6 +1,7 @@
 package net.jmp.spring.boot.app;
 
 /*
+ * (#)Version.java  0.3.0   01/01/2025
  * (#)Version.java  0.2.0   01/01/2025
  * (#)Version.java  0.1.0   12/31/2024
  *
@@ -29,11 +30,11 @@ package net.jmp.spring.boot.app;
 
 /// The version class.
 ///
-/// @version    0.2.0
+/// @version    0.3.0
 /// @since      0.1.0
 public final class Version {
     /// The version.
-    static final String VERSION_STRING = "0.2.0";
+    static final String VERSION_STRING = "0.3.0";
 
     /// The default constructor.
     private Version() {

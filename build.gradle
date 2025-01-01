@@ -1,9 +1,10 @@
 /*
+ * (#)build.gradle  0.3.0   01/01/2025
  * (#)build.gradle  0.2.0   01/01/2025
  * (#)build.gradle  0.1.0   12/31/2024
  *
  * @author   Jonathan Parker
- * @version  0.2.0
+ * @version  0.32.0
  * @since    0.1.0
  *
  * MIT License
@@ -42,7 +43,7 @@ plugins {
 }
 
 group = 'net.jmp.spring.boot.app'
-version = '0.2.0'
+version = '0.3.0'
 description = 'Spring-Boot-Service'
 
 println "The groupId is ${project.group}"

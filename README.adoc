@@ -13,6 +13,7 @@ Requirements
 Features
 ~~~~~~~~
 
+* JDBC
 * Plain Java service bean
   - HelloWorldService
   - StringService
@@ -36,5 +37,5 @@ Gradle JavaExec Tasks
 |bootRun                |No arguments
 |=======================
 
-Current version: 0.2.0.
+Current version: 0.3.0.
 ~~~~~~~~~~~~~~~~~~~~~~~
