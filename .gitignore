@@ -1,7 +1,7 @@
 .gradle
 .idea
 build
-config/secrets.properties
+src/main/resources/secrets.properties
 gradle/*
 !gradle/libs.versions.toml
 gradlew
