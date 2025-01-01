@@ -4,7 +4,7 @@
  * (#)build.gradle  0.1.0   12/31/2024
  *
  * @author   Jonathan Parker
- * @version  0.32.0
+ * @version  0.3.0
  * @since    0.1.0
  *
  * MIT License
@@ -65,10 +65,12 @@ repositories {
 
 dependencies {
 	implementation      'com.google.code.gson:gson:2.11.0'
+	implementation      'com.mysql:mysql-connector-j:9.1.0'
 	implementation      'net.jmp.util.extra:extra-utilities:1.4.1'
 	implementation      'net.jmp.util.logging:logging-utilities:1.2.0'
 	implementation		'org.mongodb:mongodb-driver-sync:5.2.0'
 	implementation		'org.springframework.boot:spring-boot-starter'
+	implementation		'org.springframework.boot:spring-boot-starter-data-jdbc:3.4.0'
 	implementation		'org.springframework.data:spring-data-mongodb:4.3.5'
 
 	testImplementation	'org.springframework.boot:spring-boot-starter-test'
