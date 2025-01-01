@@ -29,8 +29,11 @@ package net.jmp.spring.boot.app;
  */
 
 import java.util.List;
+import java.util.Optional;
 
 import net.jmp.spring.boot.app.classes.DemoDocument;
+
+import net.jmp.spring.boot.app.repositories.DemoDocumentRepository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -55,10 +58,13 @@ class TestMongoDB {
     @Autowired
     private MongoTemplate mongoTemplate;
 
+    @Autowired
+    private DemoDocumentRepository demoDocumentRepository;
+
     @DisplayName("Test MongoDB template")
     @Test
     void testMongoTemplate() {
-        final List<DemoDocument> documents = mongoTemplate.findAll(DemoDocument.class);
+        final List<DemoDocument> documents = this.mongoTemplate.findAll(DemoDocument.class);
 
         assertEquals(4, documents.size());
 
@@ -101,5 +107,65 @@ class TestMongoDB {
                 () -> assertThat(documents).contains(document2),
                 () -> assertThat(documents).contains(document3)
         );
+    }
+
+    @DisplayName("MongoDB repository")
+    @Nested
+    class TestMongoRepository {
+        @DisplayName("Test by price")
+        @Test
+        void testMongoRepositoryByPrice() {
+            final List<DemoDocument> documents = demoDocumentRepository.findByPrice(17);
+
+            assertEquals(1, documents.size(), () -> "1 is expected");
+            assertEquals("672a33a932aa022e27e36667", documents.getFirst().getId(), () -> "'672a33a932aa022e27e36667' is expected");
+
+            assertAll(
+                    () -> assertThat(1).isEqualTo(documents.size()),
+                    () -> assertThat("672a33a932aa022e27e36667").withFailMessage(() -> "'672a33a932aa022e27e36667' is expected").isEqualTo(documents.getFirst().getId())
+            );
+        }
+
+        @DisplayName("Test by quantity")
+        @Test
+        void testMongoRepositoryByQuantity() {
+            final List<DemoDocument> documents = demoDocumentRepository.findByQuantity(234);
+
+            assertEquals(1, documents.size(), () -> "1 is expected");
+            assertEquals("672a33a932aa022e27e36665", documents.getFirst().getId());
+
+            assertAll(
+                    () -> assertThat(1).withFailMessage(() -> "1 is expected").isEqualTo(documents.size()),
+                    () -> assertThat("672a33a932aa022e27e36665").isEqualTo(documents.getFirst().getId())
+            );
+        }
+
+        @DisplayName("Test by ID")
+        @Test
+        void testMongoRepositoryById() {
+            final Optional<DemoDocument> document = demoDocumentRepository.findById("672a33a932aa022e27e36664");
+
+            assertTrue(document.isPresent());
+            assertEquals("672a33a932aa022e27e36664", document.get().getId());
+
+            assertAll(
+                    () -> assertThat(document).withFailMessage(() -> "Optional document is expected").isPresent(),
+                    () -> assertThat("672a33a932aa022e27e36664").isEqualTo(document.get().getId())
+            );
+        }
+
+        @DisplayName("Test by prod ID")
+        @Test
+        void testMongoRepositoryByProdId() {
+            final Optional<DemoDocument> document = demoDocumentRepository.findByProdId(102);
+
+            assertTrue(document.isPresent());
+            assertEquals("672a33a932aa022e27e36666", document.get().getId());
+
+            assertAll(
+                    () -> assertThat(document).withFailMessage(() -> "Optional document is expected").isPresent(),
+                    () -> assertThat("672a33a932aa022e27e36666").isEqualTo(document.get().getId())
+            );
+        }
     }
 }
