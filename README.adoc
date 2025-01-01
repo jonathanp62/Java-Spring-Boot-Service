@@ -14,6 +14,8 @@ Features
 ~~~~~~~~
 
 * JDBC
+  - CrudRepository
+  - JdbcTemplate
 * Plain Java service bean
   - HelloWorldService
   - StringService
@@ -37,5 +39,5 @@ Gradle JavaExec Tasks
 |bootRun                |No arguments
 |=======================
 
-Current version: 0.3.0.
+Current version: 0.4.0.
 ~~~~~~~~~~~~~~~~~~~~~~~
