@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
+ (#)logback-test.xml    0.3.0   01/01/2025
  (#)logback-test.xml    0.2.0   01/01/2025
 
  @author   Jonathan Parker
- @version  0.2.0
+ @version  0.3.0
  @since    0.2.0
 
  MIT License
@@ -39,11 +40,9 @@
         </encoder>
     </appender>
 
-    <!--
     <logger name="com.zaxxer.hikari" additivity="false" level="warn">
         <appender-ref ref="MAIN" />
     </logger>
-    -->
     <logger name="net.jmp.spring.boot.app.Main" additivity="false" level="warn">
         <appender-ref ref="MAIN" />
     </logger>
@@ -53,10 +52,10 @@
     <logger name="net.jmp.spring.boot.app.demos.HelloWorldDemo" additivity="false" level="warn">
         <appender-ref ref="MAIN" />
     </logger>
-    <!--
     <logger name="net.jmp.spring.java.app.demos.JdbcTemplateDemo" additivity="false" level="warn">
         <appender-ref ref="MAIN" />
     </logger>
+    <!--
     <logger name="net.jmp.spring.java.app.demos.JpaDemo" additivity="false" level="warn">
         <appender-ref ref="MAIN" />
     </logger>
@@ -105,9 +104,11 @@
     <logger name="org.springframework.context" additivity="false" level="warn">
         <appender-ref ref="MAIN" />
     </logger>
+    -->
     <logger name="org.springframework.data" additivity="false" level="warn">
         <appender-ref ref="MAIN" />
     </logger>
+    <!--
     <logger name="org.springframework.orm" additivity="false" level="warn">
         <appender-ref ref="MAIN" />
     </logger>
