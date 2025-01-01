@@ -1,8 +1,9 @@
 /*
+ * (#)build.gradle  0.2.0   01/01/2025
  * (#)build.gradle  0.1.0   12/31/2024
  *
  * @author   Jonathan Parker
- * @version  0.1.0
+ * @version  0.2.0
  * @since    0.1.0
  *
  * MIT License
@@ -41,7 +42,7 @@ plugins {
 }
 
 group = 'net.jmp.spring.boot.app'
-version = '0.1.0'
+version = '0.2.0'
 description = 'Spring-Boot-Service'
 
 println "The groupId is ${project.group}"
@@ -65,7 +66,9 @@ dependencies {
 	implementation      'com.google.code.gson:gson:2.11.0'
 	implementation      'net.jmp.util.extra:extra-utilities:1.4.1'
 	implementation      'net.jmp.util.logging:logging-utilities:1.2.0'
+	implementation		'org.mongodb:mongodb-driver-sync:5.2.0'
 	implementation		'org.springframework.boot:spring-boot-starter'
+	implementation		'org.springframework.data:spring-data-mongodb:4.3.5'
 
 	testImplementation	'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly		'org.junit.platform:junit-platform-launcher'
