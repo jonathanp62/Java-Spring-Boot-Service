@@ -1,11 +1,12 @@
 /*
+ * (#)build.gradle  0.5.0   01/021/2025
  * (#)build.gradle  0.4.0   01/01/2025
  * (#)build.gradle  0.3.0   01/01/2025
  * (#)build.gradle  0.2.0   01/01/2025
  * (#)build.gradle  0.1.0   12/31/2024
  *
  * @author   Jonathan Parker
- * @version  0.4.0
+ * @version  0.5.0
  * @since    0.1.0
  *
  * MIT License
@@ -44,7 +45,7 @@ plugins {
 }
 
 group = 'net.jmp.spring.boot.app'
-version = '0.4.0'
+version = '0.5.0'
 description = 'Spring-Boot-Service'
 
 println "The groupId is ${project.group}"
@@ -65,16 +66,19 @@ repositories {
 }
 
 dependencies {
+	implementation      'com.fasterxml.jackson.core:jackson-databind:2.18.1'
 	implementation      'com.google.code.gson:gson:2.11.0'
 	implementation      'com.mysql:mysql-connector-j:9.1.0'
 	implementation      'net.jmp.util.extra:extra-utilities:1.4.1'
 	implementation      'net.jmp.util.logging:logging-utilities:1.2.0'
 	implementation		'org.mongodb:mongodb-driver-sync:5.2.0'
+	implementation		'org.redisson:redisson:3.38.1'
 	implementation		'org.springframework.boot:spring-boot-starter'
 	implementation		'org.springframework.boot:spring-boot-starter-data-jdbc:3.4.0'
 	implementation		'org.springframework.boot:spring-boot-starter-data-jpa:3.4.1'
+	implementation		'org.springframework.boot:spring-boot-starter-data-redis:3.4.1'
 	implementation		'org.springframework.data:spring-data-mongodb:4.3.5'
-
+	implementation		'redis.clients:jedis:5.2.0'
 	testImplementation	'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly		'org.junit.platform:junit-platform-launcher'
 }

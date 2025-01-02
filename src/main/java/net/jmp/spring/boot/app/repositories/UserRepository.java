@@ -1,11 +1,9 @@
-package net.jmp.spring.boot.app;
+package net.jmp.spring.boot.app.repositories;
 
 /*
- * (#)Version.java  0.5.0   01/02/2025
- * (#)Version.java  0.4.0   01/01/2025
- * (#)Version.java  0.3.0   01/01/2025
- * (#)Version.java  0.2.0   01/01/2025
- * (#)Version.java  0.1.0   12/31/2024
+ * (#)UserRepository.java   0.5.0   01/02/2025
+ *
+ * @author   Jonathan Parker
  *
  * MIT License
  *
@@ -30,16 +28,16 @@ package net.jmp.spring.boot.app;
  * SOFTWARE.
  */
 
-/// The version class.
+import net.jmp.spring.boot.app.classes.User;
+
+import org.springframework.data.repository.CrudRepository;
+
+import org.springframework.stereotype.Repository;
+
+/// A user repository interface.
 ///
 /// @version    0.5.0
-/// @since      0.1.0
-public final class Version {
-    /// The version.
-    static final String VERSION_STRING = "0.5.0";
-
-    /// The default constructor.
-    private Version() {
-        super();
-    }
+/// @since      0.5.0
+@Repository
+public interface UserRepository extends CrudRepository<User, String> {
 }

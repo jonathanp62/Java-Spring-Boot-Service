@@ -1,5 +1,5 @@
 {
-  "version": 0.4,
+  "version": 0.5,
   "package": "net.jmp.spring.boot.app.demos",
   "demos": [
     "HelloWorldDemo",
@@ -7,6 +7,7 @@
     "JpaDemo",
     "MongoRepositoryDemo",
     "MongoTemplateDemo",
+    "RedisTemplateDemo",
     "StringDemo"
   ]
 }

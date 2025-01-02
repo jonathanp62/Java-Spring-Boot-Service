@@ -1,6 +1,7 @@
 package net.jmp.spring.boot.app;
 
 /*
+ * (#)SpringBootServiceApplication.java	0.5.0   01/02/2025
  * (#)SpringBootServiceApplication.java	0.1.0   12/31/2024
  *
  * @author    Jonathan Parker
@@ -28,29 +29,16 @@ package net.jmp.spring.boot.app;
  * SOFTWARE.
  */
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import org.springframework.context.ApplicationContext;
-
-import org.springframework.context.annotation.Bean;
-
-import java.util.Arrays;
-
 /// The Spring Boot application class.
 ///
-/// @version    0.1.0
+/// @version    0.5.0
 /// @since      0.1.0
 @SpringBootApplication
 public class SpringBootServiceApplication {
-	/// The logger.
-	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
-
 	/// The default constructor.
 	public SpringBootServiceApplication() {
 		super();
@@ -63,27 +51,5 @@ public class SpringBootServiceApplication {
 	/// @param	args	java.lang.String[]
 	public static void main(final String[] args) {
 		SpringApplication.run(SpringBootServiceApplication.class, args);
-	}
-
-	/// Provides a Spring Boot {@link CommandLineRunner} that prints the names
-	/// of all the beans in the application context.
-	///
-	/// @param	context	org.springframework.context.ApplicationContext
-	/// @return			org.springframework.boot.CommandLineRunner
-	@Bean
-	public CommandLineRunner commandLineRunner(final ApplicationContext context) {
-		return args -> {
-			this.logger.info("Spring Boot Service Application Beans:");
-
-			final String[] beanNames = context.getBeanDefinitionNames();
-
-			Arrays.sort(beanNames);
-
-			for (final String beanName : beanNames) {
-				this.logger.info(beanName);
-			}
-
-			context.getBean(Main.class).run();
-		};
 	}
 }
