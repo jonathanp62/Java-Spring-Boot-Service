@@ -68,7 +68,7 @@ public class MainCommandLineRunner implements CommandLineRunner {
     public void run(final String... args) throws Exception {
         this.logger.info("Spring Boot Service Application Beans:");
 
-        final String[] beanNames = context.getBeanDefinitionNames();
+        final String[] beanNames = this.context.getBeanDefinitionNames();
 
         Arrays.sort(beanNames);
 
@@ -76,7 +76,7 @@ public class MainCommandLineRunner implements CommandLineRunner {
             this.logger.info(beanName);
         }
 
-        context.getBean(Main.class).run();
-        context.getBean(RedissonClient.class).shutdown();
+        this.context.getBean(Main.class).run();
+        this.context.getBean(RedissonClient.class).shutdown();
     }
 }

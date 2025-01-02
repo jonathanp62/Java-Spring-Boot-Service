@@ -32,15 +32,17 @@ import java.util.Optional;
 
 import net.jmp.spring.boot.app.ApplicationContextProvider;
 
+import net.jmp.spring.boot.app.classes.KeyValuePair;
 import net.jmp.spring.boot.app.classes.Student;
 import net.jmp.spring.boot.app.classes.User;
 
+import net.jmp.spring.boot.app.repositories.KeyValuePairRepository;
 import net.jmp.spring.boot.app.repositories.StudentRepository;
 import net.jmp.spring.boot.app.repositories.UserRepository;
 
-//import net.jmp.spring.boot.app.services.RedisStringService;
-import net.jmp.spring.boot.app.services.UserService;
+import net.jmp.spring.boot.app.services.KeyValuePairService;
 import net.jmp.spring.boot.app.services.StudentService;
+import net.jmp.spring.boot.app.services.UserService;
 
 import net.jmp.util.extra.demo.Demo;
 import net.jmp.util.extra.demo.DemoClass;
@@ -52,8 +54,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.springframework.context.ApplicationContext;
-
-import org.springframework.data.redis.core.RedisTemplate;
 
 /// The Redis template and repository demonstration.
 ///
@@ -79,7 +79,7 @@ public final class RedisTemplateDemo implements Demo {
 
         final ApplicationContext context = ApplicationContextProvider.getApplicationContext();
 
-//        this.stringService(context);
+        this.keyValuePairService(context);
         this.userService(context);
         this.studentRepository(context);
 
@@ -88,29 +88,32 @@ public final class RedisTemplateDemo implements Demo {
         }
     }
 
-    /// Work with the Redis string service to store and fetch objects.
+    /// Work with the Redis key/value pair service to store and fetch objects.
     ///
     /// @param  context org.springframework.context.ApplicationContext
-    private void stringService(final ApplicationContext context) {
+    private void keyValuePairService(final ApplicationContext context) {
         if (this.logger.isTraceEnabled()) {
             this.logger.trace(entryWith(context));
         }
 
-//        @SuppressWarnings("unchecked")
-//        final RedisTemplate<String, String> redisTemplate = context.getBean(RedisTemplate.class);
-//        final RedisStringService redisStringService = new RedisStringService(redisTemplate);
-//
-//        redisStringService.setValue("name", "John Doe");
-//
-//        if (this.logger.isInfoEnabled()) {
-//            this.logger.info(redisStringService.getValue("name"));
-//        }
-//
-//        if (redisStringService.deleteValue("name")) {
-//            this.logger.info("Object 'name' deleted");
-//        } else {
-//            this.logger.warn("Object 'name' not deleted");
-//        }
+        final KeyValuePairRepository stringValueRepository = context.getBean(KeyValuePairRepository.class);
+        final KeyValuePairService keyValuePairService = new KeyValuePairService(stringValueRepository);
+
+        keyValuePairService.save(new KeyValuePair("name", "John Doe"));
+
+        if (this.logger.isInfoEnabled()) {
+            final KeyValuePair kvp = keyValuePairService.findById("name").orElse(new KeyValuePair("name", "Not found"));
+
+            this.logger.info(kvp.toString());
+        }
+
+        keyValuePairService.deleteById("name");
+
+        if (keyValuePairService.existsById("name")) {
+            this.logger.warn("Object 'name' not deleted");
+        } else {
+            this.logger.info("Object 'name' deleted");
+        }
 
         if (this.logger.isTraceEnabled()) {
             this.logger.trace(exit());

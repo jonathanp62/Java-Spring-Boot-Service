@@ -66,6 +66,7 @@ repositories {
 }
 
 dependencies {
+	runtimeOnly         ("io.netty:netty-resolver-dns-native-macos:4.1.109.Final:osx-aarch_64")
 	implementation      'com.fasterxml.jackson.core:jackson-databind:2.18.1'
 	implementation      'com.google.code.gson:gson:2.11.0'
 	implementation      'com.mysql:mysql-connector-j:9.1.0'

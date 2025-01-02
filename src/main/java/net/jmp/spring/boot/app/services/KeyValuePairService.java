@@ -1,7 +1,7 @@
 package net.jmp.spring.boot.app.services;
 
 /*
- * (#)UserService.java  0.5.0   01/02/2025
+ * (#)KeyValuePairService.java  0.5.0   01/02/2025
  *
  * @author   Jonathan Parker
  *
@@ -28,65 +28,65 @@ package net.jmp.spring.boot.app.services;
  * SOFTWARE.
  */
 
-import net.jmp.spring.boot.app.classes.User;
+import net.jmp.spring.boot.app.classes.KeyValuePair;
 
-import net.jmp.spring.boot.app.repositories.UserRepository;
+import net.jmp.spring.boot.app.repositories.KeyValuePairRepository;
 
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-/// The Redis user service.
+/// The Redis string value service.
 ///
 /// @version    0.5.0
 /// @since      0.5.0
 @Service
-public class UserService {
+public class KeyValuePairService {
     /// The repository.
-    private final UserRepository userRepository;
+    private final KeyValuePairRepository keyValuePairRepository;
 
     /// The constructor.
     ///
-    /// @param  userRepository   net.jmp.spring.boot.app.repositories.UserRepository
-    public UserService(final UserRepository userRepository) {
-        this.userRepository = userRepository;
+    /// @param  keyValuePairRepository  net.jmp.spring.boot.app.repositories.KeyValuePairRepository
+    public KeyValuePairService(final KeyValuePairRepository keyValuePairRepository) {
+        this.keyValuePairRepository = keyValuePairRepository;
     }
 
-    /// Save the user.
+    /// Save the key value pair.
     ///
-    /// @param  user    net.jmp.spring.boot.app.classes.User
-    /// @return         net.jmp.spring.boot.app.classes.User
-    public User save(final User user) {
-        return this.userRepository.save(user);
+    /// @param  keyValuePair    net.jmp.spring.boot.app.classes.KeyValuePair
+    /// @return                 net.jmp.spring.boot.app.classes.KeyValuePair
+    public KeyValuePair save(final KeyValuePair keyValuePair) {
+        return this.keyValuePairRepository.save(keyValuePair);
     }
 
-    /// Find a user by identifier.
+    /// Find a key value pair by identifier.
     ///
     /// @param  id  java.lang.String
-    /// @return     java.util.Optional<net.jmp.spring.boot.app.classes.User>
-    public Optional<User> findById(final String id) {
-        return this.userRepository.findById(id);
+    /// @return     java.util.Optional<net.jmp.spring.boot.app.classes.KeyValuePair>
+    public Optional<KeyValuePair> findById(final String id) {
+        return this.keyValuePairRepository.findById(id);
     }
 
-    /// Return true if the user exists.
+    /// Return true if the key value pair exists.
     ///
     /// @param  id  java.lang.String
     /// @return     boolean
     public boolean existsById(final String id) {
-        return this.userRepository.existsById(id);
+        return this.keyValuePairRepository.existsById(id);
     }
 
-    /// Delete a user based on identifier.
+    /// Delete a key value pair based on identifier.
     ///
     /// @param  id  java.lang.String
     public void deleteById(final String id) {
-        this.userRepository.deleteById(id);
+        this.keyValuePairRepository.deleteById(id);
     }
 
-    /// Delete a user.
+    /// Delete a key value pair.
     ///
-    /// @param  user    net.jmp.spring.boot.app.classes.User
-    public void delete(final User user) {
-        this.userRepository.delete(user);
+    /// @param  keyValuePair    net.jmp.spring.boot.app.classes.KeyValuePair
+    public void delete(final KeyValuePair keyValuePair) {
+        this.keyValuePairRepository.delete(keyValuePair);
     }
 }

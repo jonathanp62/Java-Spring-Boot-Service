@@ -77,17 +77,6 @@ final class TestRedis {
     @Autowired
     private UserRepository userRepository;
 
-//    @AfterEach
-//    void afterEach() {
-//        @SuppressWarnings("unchecked")
-//        final RedisTemplate<String, String> redisStringTemplate = context.getBean(RedisTemplate.class);
-//        final RedisStringService redisStringService = new RedisStringService(redisStringTemplate);
-//
-//        if (!redisStringService.deleteValue("name")) {
-//            this.logger.warn("Object 'name' not deleted");
-//        }
-//    }
-
     @DisplayName("Redis template")
     @Nested
     class TestRedisTemplate {
