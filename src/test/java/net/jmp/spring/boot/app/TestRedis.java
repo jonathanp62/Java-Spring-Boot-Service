@@ -30,13 +30,15 @@ package net.jmp.spring.boot.app;
 
 import java.util.Optional;
 
+import net.jmp.spring.boot.app.classes.KeyValuePair;
 import net.jmp.spring.boot.app.classes.Student;
 import net.jmp.spring.boot.app.classes.User;
 
+import net.jmp.spring.boot.app.repositories.KeyValuePairRepository;
 import net.jmp.spring.boot.app.repositories.StudentRepository;
 import net.jmp.spring.boot.app.repositories.UserRepository;
 
-//import net.jmp.spring.boot.app.services.RedisStringService;
+import net.jmp.spring.boot.app.services.KeyValuePairService;
 import net.jmp.spring.boot.app.services.StudentService;
 import net.jmp.spring.boot.app.services.UserService;
 
@@ -58,7 +60,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.boot.test.context.SpringBootTest;
 
-/// The test class for the Redis service bean.
+/// The test class for the Redis service beans.
 ///
 /// @version    0.5.0
 /// @since      0.5.0
@@ -72,6 +74,9 @@ final class TestRedis {
     private RedissonClient redissonClient;
 
     @Autowired
+    private KeyValuePairRepository keyValuePairRepository;
+
+    @Autowired
     private StudentRepository studentRepository;
 
     @Autowired
@@ -80,23 +85,23 @@ final class TestRedis {
     @DisplayName("Redis template")
     @Nested
     class TestRedisTemplate {
-        @DisplayName("Test string service")
+        @DisplayName("Test key/value pair service")
         @Test
-        void testRedisStringService() {
-            // Getting the context again seems to be the only way to avoid
-            // confusing the two instances of the same RedisTemplate bean.
+        void testRedisKeyValuePairService() {
+            final KeyValuePairService keyValuePairService = new KeyValuePairService(keyValuePairRepository);
+            final KeyValuePair keyValuePair = new KeyValuePair("name", "John Doe");
+            keyValuePairService.save(keyValuePair);
 
-//            final var localContext = new AnnotationConfigApplicationContext(AppConfig.class);
-//            @SuppressWarnings("unchecked")
-//            final RedisTemplate<String, String> redisStringTemplate = localContext.getBean(RedisTemplate.class);
-//            final RedisStringService redisStringService = new RedisStringService(redisStringTemplate);
-//
-//            redisStringService.setValue("name", "John Doe");
-//
-//            final String result = redisStringService.getValue("name");
-//
-//            assertEquals("John Doe", result);
-//            assertThat(result).isEqualTo("John Doe");
+            final Optional<KeyValuePair> result = keyValuePairService.findById("name");
+
+            assertAll(
+                    () -> assertThat(result).isPresent(),
+                    () -> assertThat(keyValuePair).isEqualTo(result.get())
+            );
+
+            keyValuePairService.delete(keyValuePair);
+
+            assertFalse(keyValuePairService.existsById(keyValuePair.getKey()));
         }
 
         @DisplayName("Test user service")
