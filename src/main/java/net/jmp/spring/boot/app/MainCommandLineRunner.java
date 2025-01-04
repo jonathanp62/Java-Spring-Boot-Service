@@ -43,6 +43,10 @@ import org.springframework.context.annotation.Profile;
 
 import org.springframework.stereotype.Component;
 
+/// The MainCommandLineRunner class.
+///
+/// @version 0.5.0
+/// @since   0.5.0
 @Component
 @Profile("!test")
 public class MainCommandLineRunner implements CommandLineRunner {
