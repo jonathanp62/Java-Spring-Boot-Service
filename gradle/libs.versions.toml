@@ -1,0 +1,58 @@
+#
+# (#)libs.versions.toml 0.5.0   01/05/2025
+#
+#  @author   Jonathan Parker
+#  @version  0.5.0
+#  @since    0.5.0
+#
+#  MIT License
+#
+#  Copyright (c) 2024 Jonathan M. Parker
+#
+#  Permission is hereby granted, free of charge, to any person obtaining a copy
+#  of this software and associated documentation files (the "Software"), to deal
+#  in the Software without restriction, including without limitation the rights
+#  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+#  copies of the Software, and to permit persons to whom the Software is
+#  furnished to do so, subject to the following conditions:
+#
+#  The above copyright notice and this permission notice shall be included in all
+#  copies or substantial portions of the Software.
+#
+#  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+#  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+#  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+#  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+#  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+#  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+[versions]
+com-fasterxml-jackson-core-jackson-databind = "2.18.1"
+com-google-code-gson-gson = "2.11.0"
+com-mysql-mysql-connector-j = "9.1.0"
+io-netty-netty-resolver-dns-native-macos = "4.1.109.Final"
+org-mongodb-mongodb-driver-sync = "5.2.0"
+org-redisson-redisson = "3.38.1"
+org-springframework-boot-spring-boot-starter-data-jdbc = "3.4.0"
+org-springframework-boot-spring-boot-starter-data-jpa = "3.4.1"
+org-springframework-boot-spring-boot-starter-data-redis = "3.4.1"
+org-springframework-data-spring-data-mongodb = "4.3.5"
+net-jmp-util-extra-extra-utilities = "1.4.1"
+net-jmp-util-logging-logging-utilities = "1.2.0"
+redis-clients-jedis = "5.2.0"
+
+[libraries]
+com-fasterxml-jackson-core-jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "com-fasterxml-jackson-core-jackson-databind" }
+com-google-code-gson-gson = { module = "com.google.code.gson:gson", version.ref = "com-google-code-gson-gson" }
+com-mysql-mysql-connector-j = { module = "com.mysql:mysql-connector-j", version.ref = "com-mysql-mysql-connector-j" }
+io-netty-netty-resolver-dns-native-macos = { module = "io.netty:netty-resolver-dns-native-macos", version.ref = "io-netty-netty-resolver-dns-native-macos" }
+org-mongodb-mongodb-driver-sync = { module = "org.mongodb:mongodb-driver-sync", version.ref = "org-mongodb-mongodb-driver-sync" }
+org-redisson-redisson = { module = "org.redisson:redisson", version.ref = "org-redisson-redisson" }
+org-springframework-boot-spring-boot-starter-data-jdbc = { module = "org.springframework.boot:spring-boot-starter-data-jdbc", version.ref = "org-springframework-boot-spring-boot-starter-data-jdbc" }
+org-springframework-boot-spring-boot-starter-data-jpa = { module = "org.springframework.boot:spring-boot-starter-data-jpa", version.ref = "org-springframework-boot-spring-boot-starter-data-jpa" }
+org-springframework-boot-spring-boot-starter-data-redis = { module = "org.springframework.boot:spring-boot-starter-data-redis", version.ref = "org-springframework-boot-spring-boot-starter-data-redis" }
+org-springframework-data-spring-data-mongodb = { module = "org.springframework.data:spring-data-mongodb", version.ref = "org-springframework-data-spring-data-mongodb" }
+net-jmp-util-extra-extra-utilities = { module = "net.jmp.util.extra:extra-utilities", version.ref = "net-jmp-util-extra-extra-utilities" }
+net-jmp-util-logging-logging-utilities = { module = "net.jmp.util.logging:logging-utilities", version.ref = "net-jmp-util-logging-logging-utilities" }
+redis-clients-jedis = { module = "redis.clients:jedis", version.ref = "redis-clients-jedis" }
